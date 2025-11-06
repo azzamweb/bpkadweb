@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # MariaDB Database Service
   mariadb:
@@ -140,7 +138,9 @@ services:
 
   # Database Backup Service
   backup:
-    image: mariadb:11.2
+    build:
+      context: ./backup
+      dockerfile: Dockerfile
     container_name: bpkad-backup
     restart: unless-stopped
     environment:
@@ -152,7 +152,7 @@ services:
       TZ: Asia/Jakarta
     volumes:
       - backups:/backups
-      - ./scripts/backup-db.sh:/backup-db.sh:ro
+      - ./scripts/backup-db.sh:/usr/local/bin/backup-db.sh:ro
     networks:
       - backend
     secrets:
@@ -161,12 +161,6 @@ services:
     depends_on:
       mariadb:
         condition: service_healthy
-    entrypoint: /bin/sh
-    command: >
-      -c "
-      echo '0 2 * * * /backup-db.sh >> /var/log/backup.log 2>&1' | crontab - &&
-      crond -f -l 2
-      "
     deploy:
       resources:
         limits:
