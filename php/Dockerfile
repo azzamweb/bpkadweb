@@ -88,6 +88,11 @@ RUN curl -o /tmp/wordpress.tar.gz https://wordpress.org/latest.tar.gz \
 RUN mkdir -p /var/www/html \
     && chown -R www-data:www-data /var/www/html
 
+# Create log directories for PHP-FPM
+RUN mkdir -p /var/log/php-fpm \
+    && chown -R www-data:www-data /var/log/php-fpm \
+    && chmod 755 /var/log/php-fpm
+
 # Copy WordPress files to the container (will be used if volume is empty)
 RUN cp -rp /tmp/wordpress/* /var/www/html/ \
     && rm -rf /tmp/wordpress
