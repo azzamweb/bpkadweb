@@ -53,6 +53,7 @@ docker compose down
 echo ""
 echo -e "${GREEN}Step 3: Removing old images...${NC}"
 docker rmi bpkadweb-php-fpm bpkadweb-backup 2>/dev/null || true
+echo "Old images removed (if existed)"
 
 echo ""
 echo -e "${GREEN}Step 4: Building new images...${NC}"
