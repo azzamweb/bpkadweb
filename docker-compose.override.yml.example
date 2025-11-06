@@ -1,0 +1,47 @@
+# Docker Compose Override Example
+# Copy this file to docker-compose.override.yml for local development
+# This file is automatically loaded by Docker Compose
+
+version: '3.8'
+
+services:
+  # PHP-FPM development overrides
+  php-fpm:
+    environment:
+      # Enable WordPress debugging
+      WORDPRESS_DEBUG: 'true'
+      WORDPRESS_DEBUG_LOG: 'true'
+      WORDPRESS_DEBUG_DISPLAY: 'false'
+    volumes:
+      # Mount local theme/plugin for development
+      # - ./wp-content/themes/custom-theme:/var/www/html/wp-content/themes/custom-theme
+      # - ./wp-content/plugins/custom-plugin:/var/www/html/wp-content/plugins/custom-plugin
+
+  # Nginx development overrides
+  nginx:
+    ports:
+      # Additional port for testing
+      - "8080:80"
+
+  # Enable Adminer by default in development
+  adminer:
+    profiles: []  # Remove profile to enable by default
+
+  # Development tools
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: bpkad-mailhog
+    restart: unless-stopped
+    ports:
+      - "8025:8025"  # Web UI
+      - "1025:1025"  # SMTP
+    networks:
+      - backend
+    profiles: []  # Enable by default in dev
+
+# Development volumes
+volumes:
+  # PHPMyAdmin or other dev tools data
+  dev_data:
+    driver: local
+

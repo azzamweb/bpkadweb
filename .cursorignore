@@ -1,0 +1,38 @@
+# Cursor AI ignore file
+# Files and directories to exclude from Cursor AI context
+
+# Secrets and sensitive data
+secrets/
+*.key
+*.pem
+*.crt
+
+# Large data directories
+volumes/
+backups/
+*.sql
+*.sql.gz
+*.tar.gz
+
+# Logs
+logs/
+*.log
+
+# WordPress uploads and cache
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+
+# Node modules if any
+node_modules/
+
+# Vendor directories
+vendor/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git directory
+.git/
+

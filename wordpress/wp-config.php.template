@@ -1,0 +1,210 @@
+<?php
+/**
+ * WordPress Configuration File
+ * BPKAD Kabupaten Bengkalis
+ *
+ * This file is generated from wp-config.php.template
+ * Do not edit manually. Use init script to generate.
+ *
+ * @package WordPress
+ */
+
+// ** Database settings ** //
+define( 'DB_NAME', '%%DB_NAME%%' );
+define( 'DB_USER', '%%DB_USER%%' );
+define( 'DB_PASSWORD', '%%DB_PASSWORD%%' );
+define( 'DB_HOST', '%%DB_HOST%%' );
+define( 'DB_CHARSET', 'utf8mb4' );
+define( 'DB_COLLATE', 'utf8mb4_unicode_ci' );
+
+/**
+ * Authentication Unique Keys and Salts
+ * Generate using: https://api.wordpress.org/secret-key/1.1/salt/
+ * Or use: scripts/generate-secrets.sh
+ */
+%%WP_SALTS%%
+
+/**
+ * WordPress Database Table prefix
+ */
+$table_prefix = 'wp_';
+
+/**
+ * WordPress Localized Language
+ */
+define( 'WPLANG', 'id_ID' );
+
+/**
+ * WordPress Debugging Mode
+ * Set to false in production
+ */
+define( 'WP_DEBUG', false );
+define( 'WP_DEBUG_LOG', false );
+define( 'WP_DEBUG_DISPLAY', false );
+define( 'SCRIPT_DEBUG', false );
+
+/**
+ * Security Settings
+ */
+// Disable file editor in admin
+define( 'DISALLOW_FILE_EDIT', true );
+
+// Disable file mods (plugin/theme install/update via admin)
+// Uncomment if you want to prevent any file modifications
+// define( 'DISALLOW_FILE_MODS', true );
+
+// Force SSL for admin (if using HTTPS)
+// Cloudflare handles SSL, so we detect it via headers
+if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https' ) {
+    $_SERVER['HTTPS'] = 'on';
+    define( 'FORCE_SSL_ADMIN', true );
+}
+
+// Cloudflare Trusted Proxy
+if ( isset( $_SERVER['HTTP_CF_CONNECTING_IP'] ) ) {
+    $_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_CF_CONNECTING_IP'];
+}
+
+// Set Cloudflare IP ranges as trusted proxies
+define( 'WP_PROXY_BYPASS_HOSTS', '%%LOCAL_IP%%' );
+
+/**
+ * WordPress Site URLs
+ * Set both domain and local IP for accessibility
+ */
+$site_url = '%%SITE_URL%%';
+define( 'WP_HOME', $site_url );
+define( 'WP_SITEURL', $site_url );
+
+// Auto-detect domain based on request
+if ( isset( $_SERVER['HTTP_HOST'] ) ) {
+    $host = $_SERVER['HTTP_HOST'];
+    
+    // If accessed via local IP
+    if ( strpos( $host, '%%LOCAL_IP%%' ) !== false ) {
+        define( 'WP_HOME', 'http://%%LOCAL_IP%%' );
+        define( 'WP_SITEURL', 'http://%%LOCAL_IP%%' );
+    }
+    // If accessed via domain
+    elseif ( strpos( $host, '%%DOMAIN%%' ) !== false ) {
+        // Detect protocol (http or https)
+        $protocol = ( ! empty( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] !== 'off' ) || 
+                    ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https' ) 
+                    ? 'https://' : 'http://';
+        define( 'WP_HOME', $protocol . '%%DOMAIN%%' );
+        define( 'WP_SITEURL', $protocol . '%%DOMAIN%%' );
+    }
+}
+
+/**
+ * Content Directory (keep default)
+ */
+define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/wp-content' );
+define( 'WP_CONTENT_URL', WP_SITEURL . '/wp-content' );
+
+/**
+ * WordPress Memory Limits
+ */
+define( 'WP_MEMORY_LIMIT', '256M' );
+define( 'WP_MAX_MEMORY_LIMIT', '512M' );
+
+/**
+ * WordPress Auto-Updates
+ */
+// Enable auto-updates for core minor versions
+define( 'WP_AUTO_UPDATE_CORE', 'minor' );
+
+// Enable auto-updates for plugins (optional)
+// define( 'WP_AUTO_UPDATE_PLUGINS', true );
+
+// Enable auto-updates for themes (optional)
+// define( 'WP_AUTO_UPDATE_THEMES', true );
+
+/**
+ * WordPress Cron
+ * For better performance, disable WP-Cron and use system cron
+ */
+// define( 'DISABLE_WP_CRON', true );
+
+/**
+ * Increase WordPress HTTP timeout
+ */
+define( 'WP_HTTP_BLOCK_EXTERNAL', false );
+
+/**
+ * WordPress Post Revisions
+ * Limit revisions to prevent database bloat
+ */
+define( 'WP_POST_REVISIONS', 5 );
+
+/**
+ * WordPress Autosave Interval
+ * Set to 3 minutes (default is 1 minute)
+ */
+define( 'AUTOSAVE_INTERVAL', 180 );
+
+/**
+ * WordPress Trash
+ * Empty trash after 7 days (default is 30)
+ */
+define( 'EMPTY_TRASH_DAYS', 7 );
+
+/**
+ * Compression
+ */
+define( 'COMPRESS_CSS', true );
+define( 'COMPRESS_SCRIPTS', true );
+define( 'CONCATENATE_SCRIPTS', false );
+define( 'ENFORCE_GZIP', true );
+
+/**
+ * WordPress File Permissions
+ */
+define( 'FS_CHMOD_DIR', ( 0755 & ~ umask() ) );
+define( 'FS_CHMOD_FILE', ( 0644 & ~ umask() ) );
+
+/**
+ * Redis Object Cache (optional - if Redis is configured)
+ */
+// define( 'WP_REDIS_HOST', 'redis' );
+// define( 'WP_REDIS_PORT', 6379 );
+// define( 'WP_REDIS_TIMEOUT', 1 );
+// define( 'WP_REDIS_READ_TIMEOUT', 1 );
+// define( 'WP_REDIS_DATABASE', 0 );
+// define( 'WP_CACHE_KEY_SALT', '%%DOMAIN%%' );
+
+/**
+ * Cookie Domain
+ */
+define( 'COOKIE_DOMAIN', '%%DOMAIN%%' );
+
+/**
+ * Admin Cookie Path
+ */
+define( 'ADMIN_COOKIE_PATH', '/' );
+define( 'COOKIE_DOMAIN', false );
+define( 'COOKIEPATH', '/' );
+define( 'SITECOOKIEPATH', '/' );
+
+/**
+ * Disable XML-RPC (security)
+ */
+add_filter( 'xmlrpc_enabled', '__return_false' );
+
+/**
+ * Limit Login Attempts (via plugin or custom code)
+ */
+// Install plugin: Limit Login Attempts Reloaded
+
+/**
+ * That's all, stop editing! Happy blogging.
+ */
+
+/** Absolute path to the WordPress directory. */
+if ( ! defined( 'ABSPATH' ) ) {
+    define( 'ABSPATH', __DIR__ . '/' );
+}
+
+/** Sets up WordPress vars and included files. */
+require_once ABSPATH . 'wp-settings.php';
+

@@ -1,0 +1,47 @@
+# Environment files
+.env
+*.local
+
+# Secrets directory
+secrets/
+*.key
+*.pem
+*.crt
+*.txt
+
+# Docker volumes data
+volumes/
+
+# Logs
+logs/
+*.log
+
+# Backup files
+backups/
+*.sql
+*.sql.gz
+*.tar.gz
+
+# WordPress
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/backup-db/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
