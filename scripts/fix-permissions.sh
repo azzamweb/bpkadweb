@@ -29,9 +29,9 @@ echo "  • wp-content/upgrade/"
 echo ""
 
 # Fix ownership and permissions
-echo -e "${GREEN}Fixing permissions...${NC}"
+echo -e "${GREEN}Fixing permissions (running as root)...${NC}"
 
-docker compose exec php-fpm bash -c '
+docker compose exec -u root php-fpm bash -c '
 # Set correct ownership (www-data)
 chown -R www-data:www-data /var/www/html/wp-content
 
@@ -88,6 +88,13 @@ echo ""
 echo "wp-content/themes ownership:"
 ls -ld /var/www/html/wp-content/themes | awk "{print \$3\":\"\$4\" \"\$1}"
 '
+
+echo ""
+echo -e "${GREEN}Restarting PHP-FPM container...${NC}"
+docker compose restart php-fpm
+echo "Waiting for container to be ready..."
+sleep 5
+echo "✓ Container restarted"
 
 echo ""
 echo -e "${BLUE}========================================${NC}"
