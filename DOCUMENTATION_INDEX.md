@@ -11,9 +11,10 @@ Complete documentation guide untuk WordPress Docker deployment.
 Start here in order:
 
 1. **[00-START-HERE.md](00-START-HERE.md)** - Overview dan getting started
-2. **[FINAL_WORKING_CONFIGURATION.md](FINAL_WORKING_CONFIGURATION.md)** ⭐⭐⭐ - **PRODUCTION VERIFIED CONFIG**
-3. **[QUICKSTART.md](QUICKSTART.md)** - Deploy dalam 15 menit
-4. **[DEPLOYMENT_SUCCESS.md](DEPLOYMENT_SUCCESS.md)** ⭐ - Post-deployment guide
+2. **[FINAL_PRODUCTION_CONFIG.md](FINAL_PRODUCTION_CONFIG.md)** ⭐⭐⭐ - **STABLE CONFIG (READ THIS!)**
+3. **[PRODUCTION_README.md](PRODUCTION_README.md)** ⭐⭐ - **Quick commands & reference**
+4. **[QUICKSTART.md](QUICKSTART.md)** - Deploy dalam 15 menit
+5. **[DEPLOYMENT_SUCCESS.md](DEPLOYMENT_SUCCESS.md)** ⭐ - Post-deployment guide
 
 ### For Deploying
 
@@ -26,8 +27,9 @@ Follow these guides:
 
 If you encountered errors during deployment:
 
-1. **[PRODUCTION_FIX_FINAL.md](PRODUCTION_FIX_FINAL.md)** ⭐ - All 6 production fixes
-2. **[SITE_HEALTH_FIX.md](SITE_HEALTH_FIX.md)** ⭐ - REST API, Cron, Redis cache fix
+1. **[UPDATE_LOG.md](UPDATE_LOG.md)** ⭐⭐ - Complete history of all fixes (12 issues)
+2. **[PRODUCTION_FIX_FINAL.md](PRODUCTION_FIX_FINAL.md)** ⭐ - All 6 production fixes
+3. **[SITE_HEALTH_FIX.md](SITE_HEALTH_FIX.md)** ⭐ - REST API, Cron, Redis cache fix
 3. **[PRODUCTION_FIX_V2.md](PRODUCTION_FIX_V2.md)** - Earlier fixes
 4. **[PRODUCTION_FIX.md](PRODUCTION_FIX.md)** - Original fixes
 
