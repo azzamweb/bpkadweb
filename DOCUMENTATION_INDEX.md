@@ -150,6 +150,7 @@ All scripts in `scripts/` directory:
 | `fix-https-redirect.sh` | [PRODUCTION_FIX_FINAL.md](PRODUCTION_FIX_FINAL.md#https-redirect-loop) |
 | `fix-permissions.sh` | Fix WordPress file permissions |
 | `fix-site-health.sh` | [SITE_HEALTH_FIX.md](SITE_HEALTH_FIX.md) - REST API & Redis |
+| `add-https-detection.sh` | [FINAL_WORKING_CONFIGURATION.md](FINAL_WORKING_CONFIGURATION.md) - HTTPS/Mixed Content fix |
 
 ---
 
