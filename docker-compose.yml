@@ -48,6 +48,8 @@ services:
       WORDPRESS_DB_USER: wpuser
       WORDPRESS_DB_PASSWORD_FILE: /run/secrets/db_password
       TZ: Asia/Jakarta
+    extra_hosts:
+      - "bpkad.bengkaliskab.go.id:10.10.10.31"
     volumes:
       - wp_data:/var/www/html
       - ./php/php.ini:/usr/local/etc/php/conf.d/custom.ini:ro
@@ -123,6 +125,8 @@ services:
       WORDPRESS_DOMAIN: bpkad.bengkaliskab.go.id
       WORDPRESS_LOCAL_IP: 10.10.10.31
       TZ: Asia/Jakarta
+    extra_hosts:
+      - "bpkad.bengkaliskab.go.id:10.10.10.31"
     volumes:
       - wp_data:/var/www/html
       - ./scripts:/scripts:ro
