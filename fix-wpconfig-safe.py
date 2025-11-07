@@ -112,7 +112,7 @@ add_filter('rest_url', function($url) {
     return content
 
 def validate_php_syntax(content):
-    """Basic PHP syntax validation - simplified"""
+    """Basic PHP syntax validation - minimal checks only"""
     
     # Just check if PHP opening tag exists and file is not empty
     if not content or len(content) < 100:
@@ -121,22 +121,13 @@ def validate_php_syntax(content):
     if '<?php' not in content:
         return False, "Missing PHP opening tag"
     
-    # Check for obvious syntax errors
-    if content.count("'") % 2 != 0:
-        return False, "Unmatched single quotes"
+    # Check file size is reasonable (not truncated)
+    if len(content) < 1000:
+        return False, "File seems too short for a valid wp-config.php"
     
-    if content.count('"') % 2 != 0:
-        return False, "Unmatched double quotes"
-    
-    # Basic check for define syntax
-    if 'define(' in content:
-        # Should have proper define format
-        if not re.search(r"define\s*\(", content):
-            return False, "Invalid define() syntax"
-    
-    # If we got here, basic checks passed
-    # Real validation will be done by php -l in the container
-    return True, "Basic checks passed"
+    # That's it! Real validation will be done by php -l in the container
+    # which is 100% accurate and handles all edge cases
+    return True, "Basic checks passed (full validation by php -l)"
 
 def main():
     if len(sys.argv) != 2:
