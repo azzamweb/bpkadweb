@@ -26,8 +26,9 @@ Follow these guides:
 If you encountered errors during deployment:
 
 1. **[PRODUCTION_FIX_FINAL.md](PRODUCTION_FIX_FINAL.md)** ⭐ - All 6 production fixes
-2. **[PRODUCTION_FIX_V2.md](PRODUCTION_FIX_V2.md)** - Earlier fixes
-3. **[PRODUCTION_FIX.md](PRODUCTION_FIX.md)** - Original fixes
+2. **[SITE_HEALTH_FIX.md](SITE_HEALTH_FIX.md)** ⭐ - REST API, Cron, Redis cache fix
+3. **[PRODUCTION_FIX_V2.md](PRODUCTION_FIX_V2.md)** - Earlier fixes
+4. **[PRODUCTION_FIX.md](PRODUCTION_FIX.md)** - Original fixes
 
 ### For Security
 
@@ -65,6 +66,7 @@ If you encountered errors during deployment:
 | Document | Purpose | When to Read |
 |----------|---------|--------------|
 | **PRODUCTION_FIX_FINAL.md** | All 6 production fixes | Production errors |
+| **SITE_HEALTH_FIX.md** | REST API, Cron, Redis | Site Health warnings |
 | **PRODUCTION_FIX_V2.md** | Fix v2 (log directory) | Earlier errors |
 | **PRODUCTION_FIX.md** | Original fixes | Initial errors |
 
@@ -143,7 +145,8 @@ All scripts in `scripts/` directory:
 | `cleanup.sh` | [README.md](README.md#monitoring--maintenance) |
 | `show-credentials.sh` | [DEPLOYMENT_SUCCESS.md](DEPLOYMENT_SUCCESS.md#credentials-location) |
 | `fix-https-redirect.sh` | [PRODUCTION_FIX_FINAL.md](PRODUCTION_FIX_FINAL.md#https-redirect-loop) |
-| `fix-permissions.sh` | New - Fix WordPress file permissions |
+| `fix-permissions.sh` | Fix WordPress file permissions |
+| `fix-site-health.sh` | [SITE_HEALTH_FIX.md](SITE_HEALTH_FIX.md) - REST API & Redis |
 
 ---
 
@@ -304,6 +307,7 @@ HTTPS: https://bpkad.bengkaliskab.go.id (via Cloudflare)
 | DEPLOYMENT_SUCCESS.md | ✅ Current | Nov 2024 |
 | SECURITY.md | ✅ Current | Nov 2024 |
 | PRODUCTION_FIX_FINAL.md | ✅ Current | Nov 2024 |
+| SITE_HEALTH_FIX.md | ✅ New | Nov 2024 |
 | PROJECT_STRUCTURE.md | ✅ Current | Nov 2024 |
 | All others | ✅ Current | Nov 2024 |
 
@@ -325,8 +329,9 @@ Please open an issue or submit a pull request following [CONTRIBUTING.md](CONTRI
 
 ---
 
-**Total Documentation**: 15 markdown files  
-**Total Scripts**: 10 utility scripts  
+**Total Documentation**: 19 markdown files  
+**Total Scripts**: 11 utility scripts  
+**Total Commits**: 19 commits  
 **Status**: Complete & Up-to-date  
 **Maintained By**: BPKAD IT Team
 
